@@ -24,10 +24,12 @@ async def create_vcard(name: str = Form(...), email: str = Form(...), telephone:
     v = vobject.vCard()
     email = email[:-1]
     telephone = telephone[:-1]
+    fullAddress = fullAddress[:-1]
     v.add('fn').value = name
     v.add('email').value = email
     v.add('tel').value = telephone
     v.add('addr').value = fullAddress
+    print(v.serialize())
     return HTMLResponse(content=v.serialize(),
                         headers={"Content-Type": "text/x-vcard",
                                  "Content-Disposition": "attachment; filename=\"vcard.vcf\""})
