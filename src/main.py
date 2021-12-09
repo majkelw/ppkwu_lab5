@@ -15,34 +15,32 @@ def find_employees(request: Request, employee):
     url = "https://panoramafirm.pl/{}".format(employee)
     data = extract_data(url)
     templates = Jinja2Templates(directory="../templates")
-    print(data)
     return templates.TemplateResponse("exmployees.html", {"request": request, "data": data})
 
 
 @app.post("/api/vcard", response_class=FileResponse)
-async def create_vcard(name: str = Form(...), email: str = Form(...), telephone: str = Form(...), fullAddress: str = Form(...)):
+async def create_vcard(name: str = Form(...), email: str = Form(...), telephone: str = Form(...),
+                       fullAddress: str = Form(...)):
     v = vobject.vCard()
-    print(name)
-    print(email)
-    print(telephone)
-    print(fullAddress)
+    email = email[:-1]
+    telephone = telephone[:-1]
     v.add('fn').value = name
     v.add('email').value = email
     v.add('tel').value = telephone
-    print(v.serialize())
+    v.add('addr').value = fullAddress
     return HTMLResponse(content=v.serialize(),
                         headers={"Content-Type": "text/x-vcard",
                                  "Content-Disposition": "attachment; filename=\"vcard.vcf\""})
 
 
 def extract_data(url):
-    data = []
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
     result = soup.select("script[type=\"application/ld+json\"]")
+    data = []
     for r in result:
         one = json.loads(r.contents[0])
         if "address" in one:
-            full_address = "{}{}{}".format(
+            full_address = "{}, {}, {}".format(
                 one["address"]["addressLocality"], one["address"]["streetAddress"], one["address"][
                     "postalCode"])
         else:
