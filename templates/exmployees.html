@@ -6,10 +6,16 @@
 </head>
 <body>
 {% for item in data %}
+<form action="/api/vcard" method="POST">
     <p><b>Nazwa </b>{{ item.name }}</p>
     <p><b>Telefon </b>{{ item.telephone }}</p>
     <p><b>Email </b>{{ item.email }}</p>
+    <input type="hidden" name="name" id="name" value={{ item.name }}/>
+    <input type="hidden" name="telephone" value={{ item.telephone }}/>
+    <input type="hidden" name="email" value={{ item.email }}/>
+    <input type="submit" value="vCard"/>
     </br>
+</form>
 {% endfor %}
 </body>
 </html>
