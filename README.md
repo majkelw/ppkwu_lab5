@@ -23,7 +23,12 @@ Example response</br>
 
 ## Generating vCard
 
-Example request
+Example request, after pressing the button 'wygeneruj vCard'
 ```
 localhost:8080/api/vcard
 ```
+
+Example response, fill will be downloaded from the browser
+![1_w](https://user-images.githubusercontent.com/75738353/145416285-a34af68b-30f6-4392-a5d8-8ff076400282.jpg)
+![2_w](https://user-images.githubusercontent.com/75738353/145416290-9709e5a5-90ab-4062-ae9c-fccc2f442c29.jpg)
+
