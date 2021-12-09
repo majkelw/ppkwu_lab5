@@ -10,12 +10,12 @@
     <p><b>Nazwa </b>{{ item.name }}</p>
     <p><b>Telefon </b>{{ item.telephone }}</p>
     <p><b>Email </b>{{ item.email }}</p>
-    <p><b>Adres</b> {{item.address}}</p>
+    <p><b>Adres</b> {{item.fullAddress}}</p>
     <input type="hidden" name="name" id="name" value={{ item.name }}/>
     <input type="hidden" name="telephone" value={{ item.telephone }}/>
     <input type="hidden" name="email" value={{ item.email }}/>
     <input type="submit" value="wygeneruj vCard"/>
-    </br>
+    </br></br>
 </form>
 {% endfor %}
 </body>

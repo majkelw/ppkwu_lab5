@@ -38,16 +38,14 @@ def extract_data(url):
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
     result = soup.select("script[type=\"application/ld+json\"]")
     for r in result:
-        print('its one')
         one = json.loads(r.contents[0])
-        print(one)
         if "address" in one:
-            print(one["address"]["addressLocality"])
+            full_address = "{}, {}, {}".format(
+                one["address"]["addressLocality"], one["address"]["streetAddress"], one["address"][
+                    "postalCode"])
         else:
-            one["address"] = "Adres"
-        one.update({'fullAddress': 'value'})
-        print(one)
-        print('end')
+            full_address = "Brak adresu"
+        one.update({'fullAddress': full_address})
         data.append(one)
     return data
 
