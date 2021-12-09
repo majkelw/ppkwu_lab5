@@ -2,7 +2,7 @@
 
 # Documentation API
 
-API to search employee from the website https://panoramafirm.pl/
+API to search employees from the website https://panoramafirm.pl/
 It generates vcard for the specified employee
 
 
@@ -16,9 +16,8 @@ to generate new vcf file with employee details
 localhost:8080/api/search/elektryk
 ```
 
-<b>Example response</br>
+<b>Example response</b></br>
 ![vca](https://user-images.githubusercontent.com/75738353/145409743-8b762bb2-ef00-4557-b18a-96991410549d.jpg)
-
 
 
 ## Generating vCard
