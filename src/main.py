@@ -53,4 +53,4 @@ def extract_data(url):
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, host="192.168.1.20", port=8080)
+    uvicorn.run(app, host="localhost", port=8080)
