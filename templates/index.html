@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-{% for item in data %}
-    <p>{{ item.name }}</p>
-    <p>{{ item.telephone }}</p>
-    <p>{{ item.email }}</p>
-{% endfor %}
+
 </body>
 </html>
